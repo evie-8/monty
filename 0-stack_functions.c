@@ -10,7 +10,7 @@ int stack_push(char *token, stack_t **stack, unsigned int line_number)
 {
 	stack_t *linked;
 
-	if (token == NULL || strcmp(token, "-0") == 0)
+	if (token == NULL)
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);

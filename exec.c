@@ -28,6 +28,8 @@ int execute_monty(FILE *data)
 		else
 			end = run_monty(line, av, &top);
 		frees(av);
+		if (end == EXIT_FAILURE)
+			break;
 	}
 	free_stack(top);
 	return (end);
