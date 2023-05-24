@@ -10,7 +10,12 @@ int stack_push(char *token, stack_t **stack, unsigned int line_number)
 {
 	stack_t *linked;
 
-	if (_is_digit(token) == 0 || token == NULL)
+	if (token == NULL)
+	{
+		fprintf(stderr, "L%u: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	if (_is_digit(token) == 0)
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
@@ -60,7 +65,7 @@ void pint(stack_t **stack, unsigned int line_number)
 	(void)line_number;
 
 	if (*stack == NULL || stack == NULL)
-		return;
+		exit(EXIT_FAILURE);
 	printf("%d\n", (*stack)->n);
 }
 
@@ -93,6 +98,8 @@ void swap(stack_t **stack, unsigned int line_number)
 	stack_t *ptr;
 	ssize_t len = stack_len(*stack);
 
+	if (stack == NULL || *stack == NULL)
+		exit(EXIT_FAILURE);
 	if (len < 2)
 	{
 		fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
