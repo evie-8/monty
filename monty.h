@@ -42,6 +42,7 @@ typedef struct instruction_s
 
 /* function prototypes */
 char **tokenize(char *command, char *delim);
+char **toke(char *command, char *delim);
 void frees(char **argv);
 int execute_monty(char *data);
 int _is_digit(char *s);
@@ -50,6 +51,8 @@ void free_stack(stack_t *head);
 size_t stack_len(stack_t *h);
 char *_strdup(char *source);
 int _empty(char *str, char *delim);
+int sizes(char **array);
+char* strsep(char** stringp, const char* delim);
 
 /* error functions */
 void arg_error(void);

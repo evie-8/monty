@@ -8,15 +8,19 @@ int execute_monty(char *data)
 {
 	stack_t *top = NULL;
 	char **av, **monty;
-	int i = 0, end, line = 0;
+	int i = 0, end, t, line = 0;
 
 	av = tokenize(data, "\n");
-	while (av[i] != NULL)
+	t = sizes(av);
+	while (i < t)
 	{
 		line++;
-		monty = tokenize(av[i], " \n\a\t\b");
-		if (_empty(av[i], " ") == 0)
+		if (strlen(av[i]) == 0)
+		{
+			i++;
 			continue;
+		}
+		monty = toke(av[i], " \n\a\t\b\r");
 		if (strcmp(monty[0], "nop") == 0 || monty[0][0] == '#')
 		{
 			frees(monty);
@@ -33,3 +37,17 @@ int execute_monty(char *data)
 	frees(av);
 	return (end);
 }
+/**
+ * sizes - size of two dimensional array
+ *@array: array
+ * Return: size
+ */
+int sizes(char **array)
+{
+	int i = 0;
+
+	while (array[i])
+		i++;
+	return (i);
+}
+

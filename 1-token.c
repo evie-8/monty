@@ -1,11 +1,11 @@
 #include "monty.h"
 /**
- * tokenize - splits string
+ * toke - splits string
  * @command: string to be broken
  * @delim: delimiter
  * Return: array of strings
  */
-char **tokenize(char *command, char *delim)
+char **toke(char *command, char *delim)
 {
 	char *cmd_cpy = NULL, *token = NULL, **argv = NULL;
 	int argc = 0, i;
@@ -15,23 +15,22 @@ char **tokenize(char *command, char *delim)
 	cmd_cpy = _strdup(command);
 	if (cmd_cpy == NULL)
 		return (NULL);
-	while ((token = strsep(&command, delim)) != NULL)
+	token = strtok(command, delim);
+	while (token)
 	{
+		token = strtok(NULL, delim);
 		argc++;
 	}
 	argv = malloc(sizeof(char *) * (argc + 1));
 	if (argv == NULL)
 		return (NULL);
+
+	token = strtok(cmd_cpy, delim);
 	i = 0;
-	while ((token = strsep(&cmd_cpy, delim)) != NULL)
+	while (token)
 	{
 		argv[i] = _strdup(token);
-		if (argv[i] == NULL)
-		{
-			frees(argv);
-			free(cmd_cpy);
-			return (NULL);
-		}
+		token = strtok(NULL, delim);
 		i++;
 	}
 	argv[argc] = NULL;

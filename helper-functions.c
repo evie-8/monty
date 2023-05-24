@@ -76,10 +76,34 @@ int _empty(char *str, char *delim)
 		for (j = 0; delim[j]; j++)
 		{
 			if (str[i] == delim[j])
-				break;
+				return (0);
 		}
-		if (delim[j] == '\0')
-			return (1);
 	}
-	return (0);
+	return (1);
+}
+
+/**
+ * strsep - alternative for strtok
+ * @stringp: pointer
+ * @delim: string
+ * Return: token
+ */
+char *strsep(char **stringp, const char *delim)
+{
+	char *token;
+	char *next;
+
+	if (stringp == NULL || *stringp == NULL)
+		return (NULL);
+
+	token = *stringp;
+	next = strstr(token, delim);
+	if (next != NULL)
+	{
+		*next = '\0';
+		*stringp = (char *)(next + strlen(delim));
+	}
+	else
+		*stringp = NULL;
+	return (token);
 }
