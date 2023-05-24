@@ -68,4 +68,9 @@ void swap(stack_t **stack, unsigned int line_number);
 
 /* 2-more_functions.c */
 void addition(stack_t **stack, unsigned int line_number);
+void subtraction(stack_t **stack, unsigned int line_number);
+void division(stack_t **stack, unsigned int line_number);
+void mult(stack_t **stack, unsigned int line_number);
+void modulus(stack_t **stack, unsigned int line_number);
+
 #endif
