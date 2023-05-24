@@ -15,7 +15,7 @@ char **tokenize(char *command, char *delim)
 	cmd_cpy = _strdup(command);
 	if (cmd_cpy == NULL)
 		return (NULL);
-	while ((token = strsep(&command, delim)) != NULL)
+	while ((token = _strsep(&command, delim)) != NULL)
 	{
 		argc++;
 	}
@@ -23,7 +23,7 @@ char **tokenize(char *command, char *delim)
 	if (argv == NULL)
 		return (NULL);
 	i = 0;
-	while ((token = strsep(&cmd_cpy, delim)) != NULL)
+	while ((token = _strsep(&cmd_cpy, delim)) != NULL)
 	{
 		argv[i] = _strdup(token);
 		if (argv[i] == NULL)

@@ -52,7 +52,7 @@ size_t stack_len(stack_t *h);
 char *_strdup(char *source);
 int _empty(char *str, char *delim);
 int sizes(char **array);
-char* strsep(char** stringp, const char* delim);
+char* _strsep(char** stringp, const char* delim);
 
 /* error functions */
 void arg_error(void);

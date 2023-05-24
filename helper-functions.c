@@ -83,12 +83,12 @@ int _empty(char *str, char *delim)
 }
 
 /**
- * strsep - alternative for strtok
+ * _strsep - alternative for strtok
  * @stringp: pointer
  * @delim: string
  * Return: token
  */
-char *strsep(char **stringp, const char *delim)
+char *_strsep(char **stringp, const char *delim)
 {
 	char *token;
 	char *next;
