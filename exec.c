@@ -17,7 +17,7 @@ int execute_monty(FILE *data)
 		{
 			continue;
 		}
-		av = toke(monty, " \n\a\t\b\r");
+		av = toke(monty, " \n\a\t\b");
 		if (strcmp(av[0], "nop") == 0 || av[0][0] == '#')
 		{
 			frees(av);
