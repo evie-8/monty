@@ -20,6 +20,8 @@ int stack_push(char *token, stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
+	if (stack == NULL)
+		exit(EXIT_FAILURE);
 	linked = malloc(sizeof(stack_t));
 	if (linked == NULL)
 		mem_error();
