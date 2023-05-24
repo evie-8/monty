@@ -27,3 +27,14 @@ void mem_error(void)
 	fprintf(stderr, "Error: malloc failed\n");
 	exit(EXIT_FAILURE);
 }
+
+/**
+ * opcode_error - error due to failure to unknown opcode
+ *@line: line number
+ * @opcode: string
+ */
+void opcode_error(int line, char *opcode)
+{
+	fprintf(stderr, "L%d: unknown instruction %s\n", line, opcode);
+	 exit(EXIT_FAILURE);
+}

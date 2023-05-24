@@ -60,3 +60,26 @@ char *_strdup(char *source)
 	new[i] = '\0';
 	return (new);
 }
+
+/**
+ * _empty - checks if line is empty
+ * @str: string:
+ * @delim: string
+ * Return: 0 if empty and 1 if not
+ */
+int _empty(char *str, char *delim)
+{
+	int i, j;
+
+	for (i = 0; str[i]; i++)
+	{
+		for (j = 0; delim[j]; j++)
+		{
+			if (str[i] == delim[j])
+				break;
+		}
+		if (delim[j] == '\0')
+			return (1);
+	}
+	return (0);
+}

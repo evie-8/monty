@@ -10,7 +10,12 @@ int stack_push(char *token, stack_t **stack, unsigned int line_number)
 {
 	stack_t *linked;
 
-	if (token == NULL || !_is_digit(token))
+	if (token == NULL)
+	{
+		fprintf(stderr, "L%u: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	if (_is_digit(token) == 0)
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
@@ -57,11 +62,14 @@ void pall(stack_t **stack, unsigned int line_number)
  */
 void pint(stack_t **stack, unsigned int line_number)
 {
-	(void)line_number;
 
-	if (*stack == NULL || stack == NULL)
+	if (*stack == NULL)
+	{
+		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
-	printf("%d\n", (*stack)->n);
+	}
+	else
+		printf("%d\n", (*stack)->n);
 }
 
 /**

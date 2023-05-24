@@ -49,10 +49,13 @@ int run_monty(unsigned int line_number, char **argv, stack_t **stack);
 void free_stack(stack_t *head);
 size_t stack_len(stack_t *h);
 char *_strdup(char *source);
+int _empty(char *str, char *delim);
+
 /* error functions */
 void arg_error(void);
 void open_error(char *filename);
 void mem_error(void);
+void opcode_error(int line, char *opcode);
 
 /* stacks: 0-stack_functions.c */
 int stack_push(char *token, stack_t **stack, unsigned int line_number);

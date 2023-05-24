@@ -22,6 +22,6 @@ int run_monty(unsigned int line_number, char **argv, stack_t **stack)
 		}
 	}
 	free_stack(*stack);
-	fprintf(stderr, "L%u: unknown instruction %s\n", line_number, argv[0]);
-	exit(EXIT_FAILURE);
+	opcode_error(line_number, argv[0]);
+	return (EXIT_SUCCESS);
 }
