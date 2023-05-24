@@ -15,6 +15,11 @@ int execute_monty(char *data)
 	{
 		cpy = _strdup(av[i]);
 		monty = tokenize(cpy, " \n\t\r\a\t");
+		if (strlen(av[i]) == 0)
+		{
+			i++;
+			continue;
+		}
 		if (strcmp(monty[0], "nop") == 0 || monty[0][0] == '#')
 		{
 			frees(monty);

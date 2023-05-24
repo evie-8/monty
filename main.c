@@ -16,7 +16,7 @@ int main(int ac, char *argv[])
 	if (open_id == -1)
 		open_error(argv[1]);
 	read_id = read(open_id, buffer, SIZE);
-	if (read_id == -1)
+	if (read_id == -1 || read_id == 0)
 	{
 		close(open_id);
 		exit(EXIT_FAILURE);
