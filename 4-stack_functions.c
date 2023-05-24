@@ -19,3 +19,27 @@ void print_char(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 }
+
+/**
+ *print_str - checks if its a character
+ * @stack: pointer
+ * @line_number: line number
+ */
+void print_str(stack_t **stack, unsigned int line_number)
+{
+	stack_t *ptr;
+	(void)line_number;
+
+	ptr = *stack;
+	if (*stack == NULL || stack == NULL)
+	{
+		printf("\n");
+		return;
+	}
+	while (ptr != NULL && (ptr->n > 0 && ptr->n < 128))
+	{
+		printf("%c", ptr->n);
+		ptr = ptr->next;
+	}
+	printf("\n");
+}
