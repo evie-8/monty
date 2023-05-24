@@ -63,7 +63,7 @@ void pall(stack_t **stack, unsigned int line_number)
 void pint(stack_t **stack, unsigned int line_number)
 {
 
-	if (*stack == NULL)
+	if (*stack == NULL || stack == NULL)
 	{
 		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
@@ -81,7 +81,7 @@ void stack_pop(stack_t **stack, unsigned int line_number)
 {
 	stack_t *ptr;
 
-	if (*stack == NULL)
+	if (*stack == NULL || stack == NULL)
 	{
 		fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
 		exit(EXIT_FAILURE);
@@ -99,11 +99,8 @@ void stack_pop(stack_t **stack, unsigned int line_number)
 void swap(stack_t **stack, unsigned int line_number)
 {
 	stack_t *ptr;
-	ssize_t len = stack_len(*stack);
 
-	if (stack == NULL || *stack == NULL)
-		exit(EXIT_FAILURE);
-	if (len < 2)
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
 	{
 		fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
@@ -114,8 +111,8 @@ void swap(stack_t **stack, unsigned int line_number)
 		(*stack)->next = ptr->next;
 		ptr->next = *stack;
 		*stack = ptr;
-		ptr = (*stack)->next->prev;
-		(*stack)->next->prev = *stack;
-		(*stack)->prev = ptr;
+		/* ptr = (*stack)->next->prev; */
+		/* (*stack)->next->prev = *stack; */
+		/* (*stack)->prev = ptr; */
 	}
 }
