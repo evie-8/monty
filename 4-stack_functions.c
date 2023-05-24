@@ -68,3 +68,27 @@ void rotate1(stack_t **stack, unsigned int line_number)
 	new->prev = NULL;
 	*stack = new;
 }
+
+/**
+ * rotate2 - last become top
+ * @stack: pointer
+ * @line_number: line number
+ */
+void rotate2(stack_t **stack, unsigned int line_number)
+{
+	stack_t *ptr;
+	(void)line_number;
+
+	if (*stack == NULL)
+		return;
+	if ((*stack)->next == NULL)
+		return;
+	ptr = *stack;
+	while (ptr->next != NULL)
+		ptr = ptr->next;
+	ptr->prev->next = NULL;
+	ptr->next = *stack;
+	(*stack)->prev = ptr;
+	ptr->prev = NULL;
+	*stack = ptr;
+}

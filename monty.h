@@ -77,4 +77,5 @@ void modulus(stack_t **stack, unsigned int line_number);
 void print_char(stack_t **stack, unsigned int line_number);
 void print_str(stack_t **stack, unsigned int line_number);
 void rotate1(stack_t **stack, unsigned int line_number);
+void rotate2(stack_t **stack, unsigned int line_number);
 #endif

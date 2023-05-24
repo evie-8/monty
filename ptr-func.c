@@ -13,7 +13,7 @@ int run_monty(unsigned int line_number, char **argv, stack_t **stack)
 		{"pop", stack_pop}, {"swap", swap}, {"add", addition},
 		{"sub", subtraction}, {"div", division}, {"mul", mult},
 		{"mod", modulus}, {"pchar", print_char}, {"pstr", print_str},
-		{"rotl", rotate1}, {NULL, NULL}};
+		{"rotl", rotate1}, {"rotr", rotate2}, {NULL, NULL}};
 
 	for (i = 0; operation[i].opcode != NULL; i++)
 	{
