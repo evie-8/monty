@@ -8,7 +8,7 @@ int execute_monty(FILE *data)
 {
 	stack_t *top = NULL;
 	char **av, monty[MAX];
-	int end, line = 0;
+	int end, line = 0, change;
 
 	while (fgets(monty, MAX, data) != NULL)
 	{
@@ -23,8 +23,14 @@ int execute_monty(FILE *data)
 			frees(av);
 			continue;
 		}
-		else if (strcmp(av[0], "push") == 0)
+		else if (strcmp(av[0], "stack") == 0)
+			change = 2;
+		else if (strcmp(av[0], "queue") == 0)
+			change = 1;
+		else if (strcmp(av[0], "push") == 0 && change == 2)
 			end = stack_push(av[1], &top, line);
+		else if (strcmp(av[0], "push") == 0 && change == 1)
+			end = q_push(av[1], &top, line);
 		else
 			end = run_monty(line, av, &top);
 		frees(av);

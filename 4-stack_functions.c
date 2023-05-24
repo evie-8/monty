@@ -92,3 +92,43 @@ void rotate2(stack_t **stack, unsigned int line_number)
 	ptr->prev = NULL;
 	*stack = ptr;
 }
+/**
+ * q_push - add item at botton of stack
+ * @stack: contains address of top most item in stack
+ * @token: int
+ * @line_number: line number
+ * Return: success or failure
+ */
+int q_push(char *token, stack_t **stack, unsigned int line_number)
+{
+	stack_t *linked, *ptr;
+
+	if (token == NULL)
+	{
+		fprintf(stderr, "L%u: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	if (_is_digit(token) == 0)
+	{
+		fprintf(stderr, "L%u: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	linked = malloc(sizeof(stack_t));
+	if (linked == NULL)
+		mem_error();
+	linked->n = atoi(token);
+	linked->next = NULL;
+	linked->prev = NULL;
+	if (*stack == NULL || stack == NULL)
+		*stack = linked;
+	else
+	{
+		ptr = *stack;
+		while (ptr->next != NULL)
+			ptr = ptr->next;
+		ptr->next = linked;
+		linked->prev = ptr;
+		/* (*stack) = linked; */
+	}
+	return (EXIT_SUCCESS);
+}
