@@ -7,17 +7,20 @@
 int _is_digit(char *s)
 {
 
-	int j, i = 0;
+	int j = 0, i = 0;
 
 	while (s[i])
 		i++;
-	for (j = 0; j < i; j++)
+	if (s[0] == '-')
+		j++;
+	while (j < i)
 	{
 		if (s[j] >= 48 && s[j] <= 57)
 		{
 		}
 		else
 			return (0);
+		j++;
 	}
 	return (1);
 
