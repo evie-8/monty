@@ -13,11 +13,11 @@ int stack_push(char *token, stack_t **stack, unsigned int line_number)
 	if (_is_digit(token) == 0 || token == NULL)
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
-		return (EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
 	linked = malloc(sizeof(stack_t));
 	if (linked == NULL)
-		return (mem_error());
+		mem_error();
 	linked->n = atoi(token);
 	linked->next = NULL;
 	linked->prev = NULL;

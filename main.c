@@ -11,15 +11,15 @@ int main(int ac, char *argv[])
 	char buffer[SIZE];
 
 	if (ac != 2)
-		return (arg_error());
+		arg_error();
 	open_id = open(argv[1], O_RDONLY);
 	if (open_id == -1)
-		return (open_error(argv[1]));
+		open_error(argv[1]);
 	read_id = read(open_id, buffer, SIZE);
 	if (read_id == -1)
 	{
 		close(open_id);
-		return (EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
 	buffer[read_id - 1] = '\0';
 	close(open_id);

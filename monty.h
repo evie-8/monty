@@ -50,9 +50,9 @@ void free_stack(stack_t *head);
 size_t stack_len(stack_t *h);
 char *_strdup(char *source);
 /* error functions */
-int arg_error(void);
-int open_error(char *filename);
-int mem_error(void);
+void arg_error(void);
+void open_error(char *filename);
+void mem_error(void);
 
 /* stacks: 0-stack_functions.c */
 int stack_push(char *token, stack_t **stack, unsigned int line_number);

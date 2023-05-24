@@ -12,6 +12,7 @@ int run_monty(unsigned int line_number, char **argv, stack_t **stack)
 	instruction_t operation[] = {{"pall", pall}, {"pint", pint},
 		{"pop", stack_pop}, {"swap", swap}, {"add", addition},
 		{NULL, NULL}};
+
 	for (i = 0; operation[i].opcode != NULL; i++)
 	{
 		if (strcmp(operation[i].opcode, argv[0]) == 0)
