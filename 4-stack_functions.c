@@ -43,3 +43,28 @@ void print_str(stack_t **stack, unsigned int line_number)
 	}
 	printf("\n");
 }
+
+/**
+ * rotate1 - top become last and secon becomes first
+ * @stack: pointer
+ * @line_number: line number
+ */
+void rotate1(stack_t **stack, unsigned int line_number)
+{
+	stack_t *new, *ptr;
+	(void)line_number;
+
+	if (*stack == NULL)
+		return;
+	if ((*stack)->next == NULL)
+		return;
+	ptr = *stack;
+	new = (*stack)->next;
+	while (ptr->next != NULL)
+		ptr = ptr->next;
+	ptr->next = *stack;
+	ptr->next->next = NULL;
+	ptr->next->prev = ptr;
+	new->prev = NULL;
+	*stack = new;
+}
