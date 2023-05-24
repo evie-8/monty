@@ -73,4 +73,6 @@ void division(stack_t **stack, unsigned int line_number);
 void mult(stack_t **stack, unsigned int line_number);
 void modulus(stack_t **stack, unsigned int line_number);
 
+/* 4-stack_functions.c */
+void print_char(stack_t **stack, unsigned int line_number);
 #endif
