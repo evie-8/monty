@@ -4,50 +4,31 @@
  * @data: contains data
  * Return: success or failure
  */
-int execute_monty(char *data)
+int execute_monty(FILE *data)
 {
 	stack_t *top = NULL;
-	char **av, **monty;
-	int i = 0, end, t, line = 0;
+	char **av, monty[MAX];
+	int end, line = 0;
 
-	av = tokenize(data, "\n");
-	t = sizes(av);
-	while (i < t)
+	while (fgets(monty, MAX, data) != NULL)
 	{
 		line++;
-		if (strlen(av[i]) == 0)
+		if (strlen(monty) == 1 && monty[0] == '\n')
 		{
-			i++;
 			continue;
 		}
-		monty = toke(av[i], " \n\a\t\b\r");
-		if (strcmp(monty[0], "nop") == 0 || monty[0][0] == '#')
+		av = toke(monty, " \n\a\t\b\r");
+		if (strcmp(av[0], "nop") == 0 || av[0][0] == '#')
 		{
-			frees(monty);
-			i++;
+			frees(av);
 			continue;
 		}
-		else if (strcmp(monty[0], "push") == 0)
-			end = stack_push(monty[1], &top, line);
+		else if (strcmp(av[0], "push") == 0)
+			end = stack_push(av[1], &top, line);
 		else
-			end = run_monty(line, monty, &top);
-		frees(monty);
-		i++;
+			end = run_monty(line, av, &top);
+		frees(av);
 	}
-	frees(av);
+	free_stack(top);
 	return (end);
 }
-/**
- * sizes - size of two dimensional array
- *@array: array
- * Return: size
- */
-int sizes(char **array)
-{
-	int i = 0;
-
-	while (array[i])
-		i++;
-	return (i);
-}
-

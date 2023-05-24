@@ -8,7 +8,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 
-#define SIZE 1024
+#define  MAX 256
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -44,15 +44,14 @@ typedef struct instruction_s
 char **tokenize(char *command, char *delim);
 char **toke(char *command, char *delim);
 void frees(char **argv);
-int execute_monty(char *data);
+int execute_monty(FILE *data);
 int _is_digit(char *s);
 int run_monty(unsigned int line_number, char **argv, stack_t **stack);
 void free_stack(stack_t *head);
 size_t stack_len(stack_t *h);
 char *_strdup(char *source);
 int _empty(char *str, char *delim);
-int sizes(char **array);
-char* _strsep(char** stringp, const char* delim);
+char *_strsep(char **stringp, const char *delim);
 
 /* error functions */
 void arg_error(void);
