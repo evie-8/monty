@@ -1,4 +1,5 @@
 # Using Stacks and Queues
+![](./featured.jpg)
 ## Stacks
 ~~~~
 Stacks are linear data structure in which insertion and deletion is allowed at only one end.
