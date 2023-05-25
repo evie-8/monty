@@ -13,7 +13,8 @@ int execute_monty(FILE *data)
 	while (fgets(monty, MAX, data) != NULL)
 	{
 		line++;
-		if (strlen(monty) == 1 && monty[0] == '\n')
+		if ((strlen(monty) == 1 && monty[0] == '\n') ||
+				_empty(monty, "\n\t\a\b ") == 1)
 		{
 			continue;
 		}

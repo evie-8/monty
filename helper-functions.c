@@ -68,7 +68,7 @@ char *_strdup(char *source)
  * _empty - checks if line is empty
  * @str: string:
  * @delim: string
- * Return: 0 if empty and 1 if not
+ * Return: 1 if empty and 0 if not
  */
 int _empty(char *str, char *delim)
 {
@@ -79,8 +79,10 @@ int _empty(char *str, char *delim)
 		for (j = 0; delim[j]; j++)
 		{
 			if (str[i] == delim[j])
-				return (0);
+				break;
 		}
+		if (!delim[j])
+			return (0);
 	}
 	return (1);
 }

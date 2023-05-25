@@ -1,8 +1,10 @@
 queue
-push 1
+push 4
 push 2
+          				    
+
 push 3
-pall
+palll
 stack
 push 4
 push 5
